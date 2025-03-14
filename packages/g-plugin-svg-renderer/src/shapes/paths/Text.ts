@@ -52,6 +52,8 @@ export function updateTextElementAttribute(
   let styleCSSText = '';
   if (dx !== 0 || dy !== 0) {
     styleCSSText += `transform:translate(${dx}px, ${dy}px);`;
+  } else {
+    styleCSSText += `transform:translate(0px, 0px);`;
   }
   if (textDecorationLine && textDecorationLine !== 'none') {
     // use CSS text-decoration since the implementation in SVG is not good enough
@@ -78,6 +80,8 @@ export function updateTextElementAttribute(
         'dy',
         textBaseline === 'bottom' ? `-${height / 2}px` : `${height / 2}px`,
       );
+    } else {
+      $el.setAttribute('dy', '0px');
     }
 
     // <textPath> only support one line
